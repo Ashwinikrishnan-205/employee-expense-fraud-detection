@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🏢 Employee Expense Reimbursement Fraud Detection  
+#  Employee Expense Reimbursement Fraud Detection  
 **Developed by Ashwini Krishnan | Machine Learning Project 2025**
 
 </div>
