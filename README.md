@@ -53,18 +53,23 @@ This project automates claim verification by flagging anomalies such as **inflat
 employee_expense_fraud_project/
 │
 ├── app/
-│   └── streamlit_app.py                
+│   └── streamlit_app.py
+│
 ├── models/
 │   ├── preprocessor.pkl
 │   └── CatBoost_best_model.pkl
+│
 ├── data/
 │   └── employee_expense_fraud_dataset.csv
+│
 ├── src/
 │   ├── preprocessing_feature_engineering.py
 │   ├── train_ensemble_models.py
 │   └── eda_preprocessing.py
+│
 ├── requirements.txt
 └── README.md
+
 
 6. Installation and Setup
 Step 1: Clone the Repository
