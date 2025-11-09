@@ -1,0 +1,11 @@
+# Ignore temporary files and folders
+__pycache__/
+*.pyc
+*.pyo
+*.pkl
+*.pdf
+*.DS_Store
+.env
+.venv/
+.idea/
+.vscode/
