@@ -1,120 +1,117 @@
-# Employee Expense Reimbursement Fraud Detection  
+<div align="center">
+
+# 🏢 Employee Expense Reimbursement Fraud Detection  
 **Developed by Ashwini Krishnan | Machine Learning Project 2025**
 
+</div>
+
 ---
 
-### 1. Overview  
-This project is an AI-driven internal audit solution designed to detect potential fraud in employee expense reimbursement claims.  
-It leverages advanced machine learning (CatBoost) models, corporate analytics dashboards (Streamlit), and automated PDF reporting to enhance financial governance and compliance efficiency.
+## 1. Overview  
+This project is an **AI-driven internal audit system** designed to detect potential fraud in employee expense reimbursement claims.  
+It leverages advanced machine learning (**CatBoost**) models, a corporate-grade **Streamlit executive dashboard**, and automated **PDF reporting** to strengthen financial governance and compliance.
 
 The system provides:  
-- Fraud probability prediction using structured claim features.  
-- Real-time executive dashboard for claim analysis.  
-- Confidence-based model insights for risk interpretation.  
-- Auto-generated professional PDF audit summaries.
+- Intelligent fraud probability prediction using structured expense features.  
+- Real-time executive dashboard for claim analysis and insights.  
+- Confidence-based model interpretation with key contributing factors.  
+- Auto-generated, professional-grade PDF audit reports.
 
 ---
 
-### 2. Business Context  
-Organizations process thousands of employee reimbursement claims monthly. Manual reviews are often inconsistent and prone to bias or oversight.  
-This solution automates claim assessment by identifying anomalies such as inflated expenses, missing receipts, and abnormal approval ratios — enabling finance teams to act proactively.
+## 2. Business Context  
+Organizations process thousands of employee reimbursement claims every month. Manual reviews are often inconsistent, subjective, and time-consuming.  
+This project automates claim verification by flagging anomalies such as **inflated expenses**, **missing receipts**, and **unusual approval ratios**, helping finance departments maintain transparency and operational integrity.
 
 ---
 
-### 3. Features  
-- **Streamlit Executive Dashboard:** Corporate-style, interactive user interface.  
-- **AI-Powered Fraud Prediction:** Uses CatBoost classifier trained on structured expense data.  
-- **Advanced Analytics Expander:** Provides interpretive insights (risk confidence, key factors).  
-- **Automated PDF Reporting:** Generates a clean, one-page professional audit summary.  
-- **Configurable Data View:** Dataset and model performance toggles for transparency.
+## 3. Key Features  
+- **Executive Streamlit Dashboard** — professional corporate UI for financial analysis.  
+- **AI-Powered Fraud Detection** — built on CatBoost ensemble classification model.  
+- **Advanced Analytics Expander** — interpretable AI insights for decision makers.  
+- **Automated PDF Audit Reports** — generates single-page audit-grade summaries.  
+- **Dataset & Model Overview** — togglable transparency section for reviewers.
 
 ---
 
-### 4. Tech Stack  
+## 4. Tech Stack  
+
 | Component | Technology |
 |------------|-------------|
-| Front-End Dashboard | Streamlit |
-| Machine Learning Model | CatBoost |
+| Interface | Streamlit |
+| Machine Learning | CatBoost |
 | Data Processing | Pandas, Scikit-Learn |
 | Visualization | Matplotlib |
-| PDF Report Engine | FPDF |
+| PDF Generation | FPDF |
 | Language | Python 3.13 |
 | Deployment | Streamlit Cloud / Local Execution |
 
 ---
 
-### 5. Project Architecture  
+## 5. Project Structure  
 
 employee_expense_fraud_project/
 │
 ├── app/
-│ └── streamlit_app.py # Main Streamlit dashboard
+│   └── streamlit_app.py                
 ├── models/
-│ ├── preprocessor.pkl
-│ └── CatBoost_best_model.pkl
+│   ├── preprocessor.pkl
+│   └── CatBoost_best_model.pkl
 ├── data/
-│ └── employee_expense_fraud_dataset.csv
+│   └── employee_expense_fraud_dataset.csv
 ├── src/
-│ ├── preprocessing_feature_engineering.py
-│ ├── train_ensemble_models.py
-│ └── eda_preprocessing.py
+│   ├── preprocessing_feature_engineering.py
+│   ├── train_ensemble_models.py
+│   └── eda_preprocessing.py
 ├── requirements.txt
 └── README.md
 
-### 6. Installation & Setup  
+6. Installation and Setup
+Step 1: Clone the Repository
 
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/Ashwinikrishnan-205/employee-expense-fraud-detection.git
-   cd employee-expense-fraud-detection
+git clone https://github.com/Ashwinikrishnan-205/employee-expense-fraud-detection.git
+cd employee-expense-fraud-detection
 
-2. Create and Activate Virtual Environment
-   
+Step 2: Create and Activate a Virtual Environment
 python -m venv venv
-venv\Scripts\activate       # On Windows
+venv\Scripts\activate     
 
-3. Install Dependencies
-   
+Step 3: Install Dependencies
 pip install -r requirements.txt
 
-4. Run the Application
-
+Step 4: Run the Streamlit Application
 streamlit run app/streamlit_app.py
 
-5. Access Dashboard
-
-The app will open automatically in your browser:
+Then open the browser window at:
 http://localhost:8501
 
-6. Model Performance Summary
-   
-   | Metric            | Value                 |
+7. Model Performance Summary
+
+| Metric            | Value                 |
 | ----------------- | --------------------- |
 | Training Accuracy | 75.25 %               |
 | ROC–AUC Score     | 0.79                  |
 | Model Type        | CatBoost Classifier   |
 | Objective         | Binary Classification |
 
-7. Outputs
+8. Outputs
 
-Fraud Probability per claim
+Fraud probability and confidence level per claim.
 
-Risk Confidence Analysis
+Key risk factors and interpretability section.
 
-Contributing Factor Report
+Professional PDF report export (Expense_Fraud_Report.pdf).
 
-PDF Export: Expense_Fraud_Report.pdf
+Streamlined interface for audit and HR review teams.
 
-8. Developer Information
+9. Developer Information
 
 Author: Ashwini Krishnan
 Year: 2025
 Focus Areas: Machine Learning · Fraud Analytics · Corporate Data Science
-GitHub: https://github.com/Ashwinikrishnan-205
+GitHub: Ashwinikrishnan-205
 
-9. License
+10. License
 
-This project is developed for educational and professional demonstration purposes.
+This project was created for educational and professional demonstration purposes.
 All rights reserved © 2025 Ashwini Krishnan.
-
-   
