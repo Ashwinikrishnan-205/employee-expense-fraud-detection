@@ -77,6 +77,7 @@ employee_expense_fraud_project/
 ```bash
 git clone https://github.com/Ashwinikrishnan-205/employee-expense-fraud-detection.git
 cd employee-expense-fraud-detection
+```
 
 **Step 2:** Create and Activate a Virtual Environment  
 ```bash
@@ -95,6 +96,7 @@ streamlit run app/streamlit_app.py
 ```
 
 Then open the browser window at: [http://localhost:8501](http://localhost:8501)
+
 
 ---
 
