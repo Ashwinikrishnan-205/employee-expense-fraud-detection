@@ -1,7 +1,5 @@
-# =====================================
 # Employee Expense Fraud Detection
-# Step 3: Ensemble Model Training
-# =====================================
+# 3: Ensemble Model Training
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -21,7 +19,7 @@ y = df["Is_Fraudulent"]
 # Load preprocessor
 preprocessor = joblib.load("models/preprocessor.pkl")
 
-# Split data again (same seed for consistency)
+# Split data again
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, stratify=y, random_state=42)
 

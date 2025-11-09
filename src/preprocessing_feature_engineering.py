@@ -1,7 +1,6 @@
-# =====================================
+
 # Employee Expense Fraud Detection
-# Step 2: Data Preprocessing & Feature Engineering
-# =====================================
+# 2: Data Preprocessing & Feature Engineering
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
