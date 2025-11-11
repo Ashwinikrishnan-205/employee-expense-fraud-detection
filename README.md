@@ -10,17 +10,19 @@ Corporate-grade machine learning project that identifies fraudulent expense reim
 ## 1. Overview
 
 This project implements a machine learning–based system to detect potential fraud in employee reimbursement claims.  
-It leverages **CatBoost**, **data preprocessing pipelines**, and **automated PDF reporting** to support corporate audit teams with transparent, interpretable insights.
+It leverages **CatBoost**, **data preprocessing pipelines**, **interactive visual analytics**, and **automated PDF reporting** to support corporate audit teams with transparent, interpretable insights.
 
 ---
 
 ## 2. Key Features
 
-- Predicts probability of fraudulent expense claims.  
-- Provides confidence and interpretability for audit review.  
-- Exports professional, executive-grade PDF reports.  
-- Streamlit dashboard with clean, corporate UI for HR and finance teams.  
-- Built with reproducible ML pipelines and feature engineering.
+- Predicts the **probability of fraudulent expense claims** with confidence levels.  
+- **Interactive Streamlit dashboard** with professional UI for finance and HR review.  
+- **Dynamic visualizations** such as Expense Distribution and Fraud Rate by Department.  
+- **Model performance charts** showing accuracy and ROC–AUC visually.  
+- **Confidence and contributing factor insights** for each prediction.  
+- Generates **professional PDF reports** summarizing each claim analysis.  
+- Built with reproducible pipelines for **feature engineering and preprocessing**.
 
 ---
 
@@ -35,6 +37,7 @@ It leverages **CatBoost**, **data preprocessing pipelines**, and **automated PDF
 | Deployment           | Streamlit |
 | Language / Runtime   | Python 3.13 |
 
+
 ---
 
 ## 4. Dataset
@@ -42,6 +45,7 @@ It leverages **CatBoost**, **data preprocessing pipelines**, and **automated PDF
 - Dataset: `employee_expense_fraud_dataset.csv`  
 - Contains employee expense details with approved vs. claimed amounts, submission delays, ratings, and receipts.  
 - Target variable: `Is_Fraudulent` (binary classification)
+- Data used for model training, visualization insights, and prediction interface.
 
 ---
 
@@ -111,10 +115,21 @@ Then open the browser window at: [http://localhost:8501](http://localhost:8501)
 
 ---
 
+## 8. Visual Overview
+
+The dashboard includes:
+
+- Bar chart comparing Training Accuracy and ROC–AUC.
+- Histogram showing Expense Amount distribution.
+- Fraud Probability chart by department.
+
+---
+
 ## 8. Outputs
 
 - Fraud probability and confidence level per claim.  
 - Key risk factors and interpretability summary.  
+- Interactive visualization dashboard for dataset insights.
 - Professional PDF report export (`Expense_Fraud_Report.pdf`).  
 - Streamlined dashboard for HR and finance teams.  
 

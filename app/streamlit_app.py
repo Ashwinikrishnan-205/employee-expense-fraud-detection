@@ -4,16 +4,21 @@ import streamlit as st
 import pandas as pd
 import joblib
 import warnings
+import matplotlib.pyplot as plt
 warnings.filterwarnings("ignore", message="Please replace `use_container_width`")
 
+# ------------------------------------------------------
 # Page configuration
-
+# ------------------------------------------------------
 st.set_page_config(
     page_title="Employee Expense Reimbursement Fraud Detection",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
+# ------------------------------------------------------
+# Load Assets
+# ------------------------------------------------------
 @st.cache_resource
 def load_assets():
     preprocessor = joblib.load("models/preprocessor.pkl")
@@ -23,6 +28,9 @@ def load_assets():
 
 preprocessor, model, dataset = load_assets()
 
+# ------------------------------------------------------
+# Corporate Styling
+# ------------------------------------------------------
 st.markdown("""
     <style>
         html, body, [class*="stAppViewContainer"] {
@@ -77,7 +85,6 @@ st.markdown("""
             padding-left: 10px !important;
             position: relative;
         }
-        /* --- Enhancement 1: animated gradient underline for section titles --- */
         .section-title::after {
             content: "";
             position: absolute;
@@ -89,27 +96,16 @@ st.markdown("""
             box-shadow: 0 0 8px rgba(74, 144, 226, 0.4);
             animation: fadeIn 1.5s ease-in-out;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; width: 0; }
             to { opacity: 1; width: 60px; }
         }
 
-        .metric-box {
-            background-color: #1b1f27 !important;
-            border: 1px solid #2e2e2e !important;
-            border-radius: 8px !important;
-            color: #dcdcdc !important;
-            box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
-        }
-
-        /* --- Enhancement 2: glow hover for the PDF export button --- */
         button[kind="primary"]:hover {
             box-shadow: 0 0 12px rgba(58,143,220,0.6) !important;
             transition: 0.3s ease-in-out !important;
         }
 
-        /* --- Enhancement 3: fade-in animation for expander content --- */
         [data-testid="stExpander"] div[data-testid="stExpanderDetails"] {
             animation: fadeUp 0.6s ease-in-out;
         }
@@ -128,12 +124,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# ------------------------------------------------------
 # Header Section
-
+# ------------------------------------------------------
 st.markdown("<p class='main-header'>Employee Expense Reimbursement Fraud Detection</p>", unsafe_allow_html=True)
 st.markdown("<div class='title-accent'></div>", unsafe_allow_html=True)
 st.markdown("<p class='sub-header'>An AI-Driven Internal Audit System for Financial Compliance and Expense Fraud Detection</p>", unsafe_allow_html=True)
-
 st.markdown("""
 <p class='paragraph'>
 This platform enables corporate finance and compliance departments to evaluate employee reimbursement requests using data-driven insights. 
@@ -144,48 +140,14 @@ and strengthen overall audit governance within organizations.
 
 st.divider()
 
-#Dataset and Model Insights
-
+# ------------------------------------------------------
+# Dataset and Model Insights
+# ------------------------------------------------------
 st.markdown("<p class='section-title'>1. Dataset and Model Insights</p>", unsafe_allow_html=True)
 st.markdown("#### Customize Dashboard View")
 
 show_dataset = st.checkbox(" Show Dataset Preview", value=True)
 show_model_summary = st.checkbox(" Show Model Performance Summary", value=True)
-
-st.markdown("""
-    <style>
-        .insight-container {
-            background-color: #181b22;
-            border: 1px solid #2b2f36;
-            border-radius: 10px;
-            padding: 20px 25px 25px 25px;
-            margin-top: 15px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.35);
-        }
-        .metric-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 10px;
-        }
-        .metric-card {
-            background-color: #1b1f27;
-            border: 1px solid #30343c;
-            border-radius: 8px;
-            padding: 12px 15px;
-            text-align: left;
-        }
-        .metric-label {
-            color: #a9bcd6;
-            font-size: 14px;
-        }
-        .metric-value {
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 600;
-        }
-    </style>
-""", unsafe_allow_html=True)
 
 st.markdown("<div class='insight-container'>", unsafe_allow_html=True)
 
@@ -195,19 +157,102 @@ if show_dataset:
 
 if show_model_summary:
     st.markdown("### Model Performance Overview")
+    
     st.markdown("""
-        <div class='metric-grid'>
-            <div class='metric-card'><div class='metric-label'>Algorithm</div><div class='metric-value'>CatBoost Classifier</div></div>
-            <div class='metric-card'><div class='metric-label'>Model Type</div><div class='metric-value'>Ensemble Gradient Boosting</div></div>
-            <div class='metric-card'><div class='metric-label'>Training Accuracy</div><div class='metric-value'>75.25 %</div></div>
-            <div class='metric-card'><div class='metric-label'>ROC–AUC Score</div><div class='metric-value'>0.79</div></div>
-            <div class='metric-card'><div class='metric-label'>Preprocessing</div><div class='metric-value'>Encoding + Scaling Pipeline</div></div>
-            <div class='metric-card'><div class='metric-label'>Objective</div><div class='metric-value'>Binary Classification</div></div>
-        </div>
+    <style>
+        .perf-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #181b22;
+            border: 1px solid #2e2e2e;
+            border-radius: 8px;
+        }
+        .perf-table th, .perf-table td {
+            border: 1px solid #2e2e2e;
+            padding: 10px 15px;
+            text-align: left;
+            color: #d4d4d4;
+        }
+        .perf-table th {
+            background-color: #22252e;
+            font-weight: 700;
+            color: #76baff;
+        }
+        .perf-table tr:hover {
+            background-color: #1f232d;
+        }
+    </style>
+
+    <table class='perf-table'>
+        <tr><th>Metric</th><th>Value</th></tr>
+        <tr><td>Algorithm</td><td>CatBoost Classifier</td></tr>
+        <tr><td>Model Type</td><td>Ensemble Gradient Boosting</td></tr>
+        <tr><td>Training Accuracy</td><td>75.25%</td></tr>
+        <tr><td>ROC–AUC Score</td><td>0.79</td></tr>
+        <tr><td>Preprocessing Pipeline</td><td>Encoding + Scaling</td></tr>
+        <tr><td>Objective</td><td>Binary Classification</td></tr>
+    </table>
     """, unsafe_allow_html=True)
+
+    # Add a small visual summary
+    import matplotlib.pyplot as plt
+    perf_labels = ["Training Accuracy", "ROC–AUC"]
+    perf_values = [75.25, 79.0]
+
+# 🔹 Shorter, cleaner chart for corporate view
+    fig, ax = plt.subplots(figsize=(4.2, 1.5))  # replaces the older 4.5,1.8 line
+    ax.barh(perf_labels, perf_values, color="#3a8fdc", alpha=0.85)
+    ax.grid(False)  # removes extra background gridlines for a clean look
+
+    ax.set_xlim(0, 100)
+    ax.set_xlabel("Score (%)", color="#c9c9c9", fontsize=9)
+    ax.tick_params(colors="#c9c9c9", labelsize=9)
+
+    for i, v in enumerate(perf_values):
+        ax.text(v + 1, i, f"{v:.1f}%", color="#ffffff", fontsize=9, va="center")
+
+    ax.set_facecolor("#181b22")
+    fig.patch.set_facecolor("#0f1116")
+    st.pyplot(fig)
+
+
+# ------------------------------------------------------
+# Visual Insights Section (Before Prediction)
+# ------------------------------------------------------
+st.markdown("<p class='section-title'>1.5 Visual Insights</p>", unsafe_allow_html=True)
+
+colA, colB = st.columns(2)
+
+with colA:
+    st.markdown("#### Expense Amount Distribution")
+    fig1, ax1 = plt.subplots(figsize=(4.5, 3))
+    ax1.hist(dataset["Expense_Amount"], bins=25, color="#3a8fdc", alpha=0.8)
+    ax1.set_xlabel("Expense Amount", color="#c9c9c9")
+    ax1.set_ylabel("Frequency", color="#c9c9c9")
+    ax1.tick_params(colors="#c9c9c9", labelsize=8)
+    ax1.set_facecolor("#181b22")
+    fig1.patch.set_facecolor("#0f1116")
+    st.pyplot(fig1)
+
+with colB:
+    st.markdown("#### Fraud Rate by Department")
+    dept_fraud = dataset.groupby("Department")["Is_Fraudulent"].mean().sort_values()
+    fig2, ax2 = plt.subplots(figsize=(4.5, 3))
+    dept_fraud.plot(kind="bar", ax=ax2, color="#4ca1ff", alpha=0.85)
+    ax2.set_ylabel("Fraud Probability", color="#c9c9c9")
+    ax2.tick_params(colors="#c9c9c9", labelsize=8, rotation=45)
+    ax2.set_facecolor("#181b22")
+    fig2.patch.set_facecolor("#0f1116")
+    st.pyplot(fig2)
 
 st.markdown("</div>", unsafe_allow_html=True)
 st.divider()
+
+# ------------------------------------------------------
+# Prediction Interface (Rest Unchanged)
+# ------------------------------------------------------
+# (keep your prediction + PDF section exactly as in your last code)
+
 
 # Prediction Interface
 
